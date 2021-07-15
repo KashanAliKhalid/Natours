@@ -4,13 +4,14 @@
   "description": "Landing page for natours",
   "main": "index.js",
   "scripts": {
+    "devserver": "live-server",
     "watch:sass": "node-sass sass/main.scss css/style.css -w",
-    "start": "npm-run-all compile:sass concat:sass prefix:css compress:css",
+    "start": "npm-run-all --parallel watch:sass devserver",
     "compile:sass": "node-sass sass/main.scss css/style.comp.css ",
     "concat:sass": "concat -o css/style.concat.css css/icon-font.css css/style.comp.css",
     "prefix:css": "postcss --use autoprefixer -b 'last versions' css/style.concat.css -o css/style.prefix.css",
     "compress:css": "node-sass css/style.prefix.css css/style.css --output-style compressed",
-    "build": "npm-run-all compile:sass concat:sass prefix:css compress:css"
+    "build:css": "npm-run-all compile:sass concat:sass prefix:css compress:css"
   },
   "author": "",
   "license": "ISC",
